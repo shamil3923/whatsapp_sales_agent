@@ -12,7 +12,12 @@ from dotenv import load_dotenv
 import asyncio
 from datetime import datetime
 import logging
+import sys
+import os
+sys.path.append(os.path.dirname(__file__))
+
 from sales_agent import get_sales_agent, get_ai_response
+from conversation_memory import ConversationMemory
 
 # Load environment variables
 load_dotenv()
@@ -33,7 +38,7 @@ WHATSAPP_API_URL = f"https://graph.facebook.com/v18.0/{WHATSAPP_PHONE_NUMBER_ID}
 class WhatsAppBot:
     def __init__(self):
         self.sales_agent = None
-        self.user_sessions = {}  # Store user conversation context
+        self.memory = ConversationMemory()  # Initialize conversation memory system
     
     def get_agent(self):
         """Get or create sales agent instance"""
@@ -95,29 +100,54 @@ class WhatsAppBot:
             return False
     
     def process_message(self, phone_number: str, message: str) -> str:
-        """Process incoming message with Sales Agent"""
+        """Process incoming message with conversation memory and generate context-aware response"""
         try:
-            # Add context for WhatsApp
+            # Add user message to memory
+            self.memory.add_message(phone_number, "user", message)
+
+            # Get conversation context
+            conversation_context = self.memory.get_conversation_context(phone_number)
+
+            # Detect message type and extract insights
+            message_type, metadata = self._analyze_message(message)
+
+            # Update user preferences based on message
+            self._update_user_preferences(phone_number, message, message_type)
+
+            # Create enhanced context with memory
             whatsapp_context = f"""
-            [WhatsApp Message from {phone_number}]
-            User Message: {message}
-            
-            Please respond in a WhatsApp-friendly format:
-            - Keep responses concise but informative
-            - Use emojis appropriately
-            - Break long responses into shorter paragraphs
-            - For currency conversions, format clearly
-            - End with a helpful question or suggestion
+            [WhatsApp Sales Agent - Context-Aware Response]
+
+            CONVERSATION CONTEXT:
+            {conversation_context}
+
+            CURRENT MESSAGE:
+            User: {message}
+            Message Type: {message_type}
+
+            RESPONSE GUIDELINES:
+            - Use conversation history to provide personalized responses
+            - Reference previous interactions when relevant
+            - Remember user preferences (currency, interests, etc.)
+            - Keep responses WhatsApp-friendly (concise, emojis, clear formatting)
+            - For returning users, acknowledge their return
+            - For currency conversions, use their preferred currency when possible
+            - End with a helpful question or suggestion based on their interests
+
+            Generate a context-aware, personalized response:
             """
-            
+
             # Get AI response
             response = get_ai_response(whatsapp_context)
-            
+
             # Format response for WhatsApp
             formatted_response = self.format_for_whatsapp(response.content)
-            
+
+            # Add assistant response to memory
+            self.memory.add_message(phone_number, "assistant", formatted_response, message_type, metadata)
+
             return formatted_response
-            
+
         except Exception as e:
             logger.error(f"Error processing message: {str(e)}")
             return "Sorry, I'm having trouble processing your request. Please try again! 🤖"
@@ -135,6 +165,100 @@ class WhatsAppBot:
             formatted = formatted[:3900] + "\n\n... (message truncated)\n\nAsk me for more details! 💬"
         
         return formatted
+
+    def _analyze_message(self, message: str) -> tuple[str, dict]:
+        """Analyze message type and extract metadata"""
+        message_lower = message.lower()
+        metadata = {}
+
+        # Currency conversion detection
+        currency_keywords = ['convert', 'exchange', 'usd', 'eur', 'gbp', 'jpy', 'currency', 'rate']
+        if any(keyword in message_lower for keyword in currency_keywords):
+            return "currency_conversion", {"detected_currencies": self._extract_currencies(message)}
+
+        # Product inquiry detection
+        product_keywords = ['laptop', 'phone', 'smartphone', 'computer', 'product', 'buy', 'price', 'cost']
+        if any(keyword in message_lower for keyword in product_keywords):
+            return "product_inquiry", {"detected_products": self._extract_products(message)}
+
+        # Greeting detection
+        greeting_keywords = ['hello', 'hi', 'hey', 'good morning', 'good afternoon', 'good evening']
+        if any(keyword in message_lower for keyword in greeting_keywords):
+            return "greeting", {}
+
+        # Help/support detection
+        help_keywords = ['help', 'support', 'assistance', 'problem', 'issue']
+        if any(keyword in message_lower for keyword in help_keywords):
+            return "support", {}
+
+        return "general", {}
+
+    def _extract_currencies(self, message: str) -> list:
+        """Extract currency codes from message"""
+        currencies = []
+        currency_codes = ['USD', 'EUR', 'GBP', 'JPY', 'CAD', 'AUD', 'CHF', 'CNY', 'INR', 'KRW']
+        message_upper = message.upper()
+
+        for code in currency_codes:
+            if code in message_upper:
+                currencies.append(code)
+
+        return currencies
+
+    def _extract_products(self, message: str) -> list:
+        """Extract product mentions from message"""
+        products = []
+        product_terms = ['laptop', 'phone', 'smartphone', 'computer', 'tablet', 'headphones', 'charger']
+        message_lower = message.lower()
+
+        for term in product_terms:
+            if term in message_lower:
+                products.append(term)
+
+        return products
+
+    def _update_user_preferences(self, phone_number: str, message: str, message_type: str):
+        """Update user preferences based on message content"""
+        try:
+            # Extract and update preferred currency
+            currencies = self._extract_currencies(message)
+            if currencies and message_type == "currency_conversion":
+                # Use the first currency mentioned as preferred
+                self.memory.update_user_preferences(phone_number, preferred_currency=currencies[0])
+
+            # Add interests based on product inquiries
+            if message_type == "product_inquiry":
+                products = self._extract_products(message)
+                for product in products:
+                    self.memory.add_user_interest(phone_number, product)
+
+            # Extract name if user introduces themselves
+            if "my name is" in message.lower() or "i'm" in message.lower():
+                name = self._extract_name(message)
+                if name:
+                    self.memory.update_user_preferences(phone_number, name=name)
+
+        except Exception as e:
+            logger.error(f"Error updating user preferences: {e}")
+
+    def _extract_name(self, message: str) -> str:
+        """Extract name from user message"""
+        message_lower = message.lower()
+
+        # Simple name extraction patterns
+        if "my name is" in message_lower:
+            parts = message_lower.split("my name is")
+            if len(parts) > 1:
+                name_part = parts[1].strip().split()[0]
+                return name_part.capitalize()
+
+        if "i'm" in message_lower:
+            parts = message_lower.split("i'm")
+            if len(parts) > 1:
+                name_part = parts[1].strip().split()[0]
+                return name_part.capitalize()
+
+        return None
 
 # Initialize bot
 whatsapp_bot = WhatsAppBot()
@@ -207,6 +331,82 @@ def send_manual_message():
             
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@app.route('/conversation/<phone_number>', methods=['GET'])
+def get_conversation_history(phone_number):
+    """Get conversation history for a specific user"""
+    try:
+        # Remove URL encoding
+        phone_number = phone_number.replace('%2B', '+')
+
+        session = whatsapp_bot.memory.get_or_create_session(phone_number)
+
+        conversation_data = {
+            "user_profile": {
+                "phone_number": session.user_profile.phone_number,
+                "name": session.user_profile.name,
+                "preferred_currency": session.user_profile.preferred_currency,
+                "interests": session.user_profile.interests,
+                "total_interactions": session.user_profile.total_interactions,
+                "last_interaction": session.user_profile.last_interaction
+            },
+            "messages": [
+                {
+                    "timestamp": msg.timestamp,
+                    "role": msg.role,
+                    "content": msg.content,
+                    "message_type": msg.message_type,
+                    "metadata": msg.metadata
+                }
+                for msg in session.messages[-20:]  # Last 20 messages
+            ],
+            "session_info": {
+                "created_at": session.created_at,
+                "updated_at": session.updated_at,
+                "total_messages": len(session.messages)
+            }
+        }
+
+        return jsonify(conversation_data)
+
+    except Exception as e:
+        logger.error(f"Error getting conversation history: {str(e)}")
+        return jsonify({"error": "Internal server error"}), 500
+
+@app.route('/analytics/users', methods=['GET'])
+def get_users_analytics():
+    """Get analytics for all users"""
+    try:
+        users_summary = whatsapp_bot.memory.get_all_users_summary()
+
+        analytics = {
+            "total_users": len(users_summary),
+            "users": users_summary,
+            "summary": {
+                "total_interactions": sum(user.get("total_interactions", 0) for user in users_summary),
+                "active_users_24h": len([
+                    user for user in users_summary
+                    if user.get("last_interaction") and
+                    (datetime.now() - datetime.fromisoformat(user["last_interaction"])).days < 1
+                ]),
+                "top_interests": _get_top_interests(users_summary)
+            }
+        }
+
+        return jsonify(analytics)
+
+    except Exception as e:
+        logger.error(f"Error getting analytics: {str(e)}")
+        return jsonify({"error": "Internal server error"}), 500
+
+def _get_top_interests(users_summary):
+    """Get top user interests"""
+    interest_count = {}
+    for user in users_summary:
+        for interest in user.get("interests", []):
+            interest_count[interest] = interest_count.get(interest, 0) + 1
+
+    return sorted(interest_count.items(), key=lambda x: x[1], reverse=True)[:5]
 
 @app.route('/health', methods=['GET'])
 def health_check():

@@ -1,0 +1,45 @@
+{
+  "user_profile": {
+    "phone_number": "+2222222222",
+    "name": "Bob",
+    "preferred_currency": "GBP",
+    "interests": [
+      "laptops"
+    ],
+    "last_interaction": "2025-07-22T23:52:42.548393",
+    "total_interactions": 4
+  },
+  "messages": [
+    {
+      "timestamp": "2025-07-22T23:40:14.422654",
+      "role": "user",
+      "content": "Hi, I'm Bob from UK",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.422654",
+      "role": "assistant",
+      "content": "Hello Bob! Welcome!",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.548393",
+      "role": "user",
+      "content": "Hi, I'm Bob from UK",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.548393",
+      "role": "assistant",
+      "content": "Hello Bob! Welcome!",
+      "message_type": "text",
+      "metadata": {}
+    }
+  ],
+  "session_summary": null,
+  "created_at": "2025-07-22T23:40:14.422654",
+  "updated_at": "2025-07-22T23:52:42.548393"
+}

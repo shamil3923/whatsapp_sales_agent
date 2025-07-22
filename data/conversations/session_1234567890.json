@@ -1,0 +1,151 @@
+{
+  "user_profile": {
+    "phone_number": "+1234567890",
+    "name": "John Smith",
+    "preferred_currency": "EUR",
+    "interests": [
+      "gaming",
+      "laptops"
+    ],
+    "last_interaction": "2025-07-23T00:08:22.364289",
+    "total_interactions": 19
+  },
+  "messages": [
+    {
+      "timestamp": "2025-07-22T23:40:14.394721",
+      "role": "user",
+      "content": "Hi, my name is John",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.394721",
+      "role": "assistant",
+      "content": "Hello John! Welcome to our store! How can I help you today?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.394721",
+      "role": "user",
+      "content": "I'm looking for a laptop for gaming",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.394721",
+      "role": "assistant",
+      "content": "Great choice! We have excellent gaming laptops with RTX 4080 graphics cards. What's your budget range?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.398861",
+      "role": "user",
+      "content": "Convert 1500 USD to EUR please",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.399486",
+      "role": "assistant",
+      "content": "1500 USD converts to approximately 1275 EUR at current rates. Would you like to see laptops in EUR pricing?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.399486",
+      "role": "user",
+      "content": "Yes, show me laptops under 1200 EUR",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.399486",
+      "role": "assistant",
+      "content": "Perfect! Here are some great gaming laptops under 1200 EUR...",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.517126",
+      "role": "user",
+      "content": "Hi, my name is John",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.518123",
+      "role": "assistant",
+      "content": "Hello John! Welcome to our store! How can I help you today?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.519124",
+      "role": "user",
+      "content": "I'm looking for a laptop for gaming",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.520124",
+      "role": "assistant",
+      "content": "Great choice! We have excellent gaming laptops with RTX 4080 graphics cards. What's your budget range?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.521124",
+      "role": "user",
+      "content": "Convert 1500 USD to EUR please",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.521124",
+      "role": "assistant",
+      "content": "1500 USD converts to approximately 1275 EUR at current rates. Would you like to see laptops in EUR pricing?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.522629",
+      "role": "user",
+      "content": "Yes, show me laptops under 1200 EUR",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.524221",
+      "role": "assistant",
+      "content": "Perfect! Here are some great gaming laptops under 1200 EUR...",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-23T00:06:28.745227",
+      "role": "user",
+      "content": "Hello, I am back. Do you remember me?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-23T00:06:32.149755",
+      "role": "assistant",
+      "content": "Hello John! 👋 Great to see you back! I remember you were looking for a gaming laptop under 1200 EUR. Did you have any specific features in mind, or are you still browsing? 😊 \n",
+      "message_type": "greeting",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-23T00:08:22.364289",
+      "role": "user",
+      "content": "Hi, I am back. Do you remember me?",
+      "message_type": "text",
+      "metadata": {}
+    }
+  ],
+  "session_summary": null,
+  "created_at": "2025-07-22T23:40:14.394721",
+  "updated_at": "2025-07-23T00:08:22.364289"
+}

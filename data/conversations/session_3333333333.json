@@ -1,0 +1,45 @@
+{
+  "user_profile": {
+    "phone_number": "+3333333333",
+    "name": "Marie",
+    "preferred_currency": "EUR",
+    "interests": [
+      "accessories"
+    ],
+    "last_interaction": "2025-07-22T23:52:42.549999",
+    "total_interactions": 4
+  },
+  "messages": [
+    {
+      "timestamp": "2025-07-22T23:40:14.430272",
+      "role": "user",
+      "content": "Bonjour, je suis Marie",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.430272",
+      "role": "assistant",
+      "content": "Bonjour Marie! Comment puis-je vous aider?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.549391",
+      "role": "user",
+      "content": "Bonjour, je suis Marie",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.549999",
+      "role": "assistant",
+      "content": "Bonjour Marie! Comment puis-je vous aider?",
+      "message_type": "text",
+      "metadata": {}
+    }
+  ],
+  "session_summary": null,
+  "created_at": "2025-07-22T23:40:14.430272",
+  "updated_at": "2025-07-22T23:52:42.549999"
+}

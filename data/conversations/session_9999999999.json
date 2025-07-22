@@ -1,0 +1,200 @@
+{
+  "user_profile": {
+    "phone_number": "+9999999999",
+    "name": null,
+    "preferred_currency": "EUR",
+    "interests": [
+      "gaming",
+      "video editing"
+    ],
+    "last_interaction": "2025-07-22T23:52:42.593200",
+    "total_interactions": 26
+  },
+  "messages": [
+    {
+      "timestamp": "2025-07-22T23:40:14.462776",
+      "role": "user",
+      "content": "Hello",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.462776",
+      "role": "assistant",
+      "content": "Hi! Welcome to our store! I'm your AI sales assistant. How can I help you today?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.462776",
+      "role": "user",
+      "content": "I'm looking for a new laptop",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.462776",
+      "role": "assistant",
+      "content": "Great! I'd be happy to help you find the perfect laptop. What will you primarily use it for?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.462776",
+      "role": "user",
+      "content": "Gaming and video editing",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.469085",
+      "role": "assistant",
+      "content": "Excellent! For gaming and video editing, you'll want a powerful machine. What's your budget range?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.469085",
+      "role": "user",
+      "content": "Around 2000 USD",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.469085",
+      "role": "assistant",
+      "content": "Perfect! With a $2000 budget, we have some fantastic options. Would you like to see our top gaming laptops?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.469085",
+      "role": "user",
+      "content": "Yes, but can you show prices in EUR?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.472601",
+      "role": "assistant",
+      "content": "Of course! 2000 USD is approximately 1700 EUR. Here are our top gaming laptops in EUR...",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.472601",
+      "role": "user",
+      "content": "Thanks! I'll think about it and come back later",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.472601",
+      "role": "assistant",
+      "content": "No problem! Take your time. I'll remember our conversation when you return. Have a great day!",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:40:14.478130",
+      "role": "user",
+      "content": "Hi, I'm back. Do you remember me?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.582908",
+      "role": "user",
+      "content": "Hello",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.582908",
+      "role": "assistant",
+      "content": "Hi! Welcome to our store! I'm your AI sales assistant. How can I help you today?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.583908",
+      "role": "user",
+      "content": "I'm looking for a new laptop",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.583908",
+      "role": "assistant",
+      "content": "Great! I'd be happy to help you find the perfect laptop. What will you primarily use it for?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.584904",
+      "role": "user",
+      "content": "Gaming and video editing",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.584904",
+      "role": "assistant",
+      "content": "Excellent! For gaming and video editing, you'll want a powerful machine. What's your budget range?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.586410",
+      "role": "user",
+      "content": "Around 2000 USD",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.587995",
+      "role": "assistant",
+      "content": "Perfect! With a $2000 budget, we have some fantastic options. Would you like to see our top gaming laptops?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.588677",
+      "role": "user",
+      "content": "Yes, but can you show prices in EUR?",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.589684",
+      "role": "assistant",
+      "content": "Of course! 2000 USD is approximately 1700 EUR. Here are our top gaming laptops in EUR...",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.591143",
+      "role": "user",
+      "content": "Thanks! I'll think about it and come back later",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.591684",
+      "role": "assistant",
+      "content": "No problem! Take your time. I'll remember our conversation when you return. Have a great day!",
+      "message_type": "text",
+      "metadata": {}
+    },
+    {
+      "timestamp": "2025-07-22T23:52:42.593200",
+      "role": "user",
+      "content": "Hi, I'm back. Do you remember me?",
+      "message_type": "text",
+      "metadata": {}
+    }
+  ],
+  "session_summary": null,
+  "created_at": "2025-07-22T23:40:14.462776",
+  "updated_at": "2025-07-22T23:52:42.593200"
+}
