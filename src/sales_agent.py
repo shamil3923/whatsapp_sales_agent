@@ -135,7 +135,7 @@ st.set_page_config(
     page_icon="🤖",
     layout="centered"
 )
-st.title("💼 Sales Agent Pro")
+st.title("💼 Sales Agent")
 st.markdown("Powered by Gemini Pro | Market Analytics | Currency Conversion 💱")
 
 # Expanded Product Catalog
