@@ -1,4 +1,4 @@
-# 🤖 WhatsApp Sales Agent Pro
+# 🤖 WhatsApp Sales Agent
 
 An intelligent WhatsApp sales agent powered by Google Gemini AI with real-time currency conversion, market analysis, and automated customer support.
 
@@ -186,32 +186,5 @@ Bot: "💻 **Available Laptops:**
 Would you like details on any specific category?"
 ```
 
-## 🤝 Contributing
 
-1. Fork the repository
-2. Create feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit changes (`git commit -m 'Add amazing feature'`)
-4. Push to branch (`git push origin feature/amazing-feature`)
-5. Open Pull Request
 
-## 📝 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🆘 Support
-
-- 📧 Email: support@example.com
-- 💬 WhatsApp: +1-xxx-xxx-xxxx
-- 🐛 Issues: [GitHub Issues](https://github.com/shamil3923/ERP_Recommendation_Widget-/issues)
-
-## 🙏 Acknowledgments
-
-- Google Gemini AI for intelligent responses
-- Meta WhatsApp Business API
-- ExchangeRate-API for currency data
-- Streamlit for web interface
-- Flask for webhook handling
-
----
-
-**Made with ❤️ by [Mohamed Shamil](https://github.com/shamil3923)**
