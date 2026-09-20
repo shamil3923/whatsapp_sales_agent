@@ -22,7 +22,11 @@ class TestWhatsAppBot(unittest.TestCase):
     def test_bot_initialization(self):
         """Test bot initialization"""
         self.assertIsNone(self.bot.sales_agent)
-        self.assertEqual(self.bot.user_sessions, {})
+        # Per-user state lives in ConversationMemory, not a `user_sessions`
+        # dict; that attribute was dropped when memory was introduced.
+        self.assertIsNotNone(self.bot.memory)
+        session = self.bot.memory.get_or_create_session("+15550000099")
+        self.assertEqual(session.messages, [])
     
     @patch('whatsapp_integration.get_sales_agent')
     def test_get_agent(self, mock_get_sales_agent):
@@ -218,8 +222,15 @@ class TestEnvironmentConfiguration(unittest.TestCase):
         # Reload module to pick up new env vars
         import importlib
         import whatsapp_integration
+
+        # Reloading rebinds the module's globals from the patched environment.
+        # Without reloading again afterwards those values outlive this test —
+        # VERIFY_TOKEN stayed 'test_verify' and made test_webhook_verification
+        # fail with 403 whenever this class ran first.
+        self.addCleanup(importlib.reload, whatsapp_integration)
+
         importlib.reload(whatsapp_integration)
-        
+
         self.assertEqual(whatsapp_integration.WHATSAPP_TOKEN, 'test_token')
         self.assertEqual(whatsapp_integration.WHATSAPP_PHONE_NUMBER_ID, 'test_id')
         self.assertEqual(whatsapp_integration.VERIFY_TOKEN, 'test_verify')

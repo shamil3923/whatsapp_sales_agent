@@ -7,7 +7,7 @@ that has been integrated into the Sales Agent.
 
 import sys
 import os
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", "..", "src"))
 
 from sales_agent import CurrencyConverter
 

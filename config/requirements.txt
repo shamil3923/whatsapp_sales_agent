@@ -11,6 +11,13 @@ flask>=3.0.0
 # Memory System Dependencies
 dataclasses-json>=0.6.0  # For enhanced dataclass serialization
 
+# Retrieval
+# rank_bm25 is used only as a reference implementation in the catalog tests;
+# src/catalog.py has its own BM25 so the agent tools need no extra dependency.
+# Semantic retrieval needs config/requirements-ml.txt (torch); without it the
+# catalog serves lexical results.
+rank_bm25>=0.2.2
+
 # Production Server
 gunicorn>=21.2.0
 gevent>=23.7.0

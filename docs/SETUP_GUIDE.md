@@ -17,8 +17,8 @@ Before starting, ensure you have:
 
 ### 1.1 Clone Repository
 ```bash
-git clone https://github.com/shamil3923/ERP_Recommendation_Widget-.git
-cd Task_02
+git clone https://github.com/shamil3923/whatsapp_sales_agent.git
+cd whatsapp_sales_agent
 ```
 
 ### 1.2 Create Virtual Environment

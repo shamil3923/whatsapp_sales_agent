@@ -67,7 +67,7 @@ class TestEndToEndIntegration(unittest.TestCase):
         # Verify AI was called with WhatsApp context
         mock_ai_response.assert_called_once()
         call_args = mock_ai_response.call_args[0][0]
-        self.assertIn("WhatsApp Message", call_args)
+        self.assertIn("WhatsApp Sales Agent", call_args)
         self.assertIn("Convert 100 USD to EUR", call_args)
         
         # Verify WhatsApp message was sent
@@ -176,42 +176,46 @@ class TestPerformanceAndReliability(unittest.TestCase):
         
         converter = CurrencyConverter()
         result = converter.convert_currency(100, 'USD', 'EUR')
-        
-        self.assertIn('Error', result)
+
+        # A timeout is reported as "Network error"; match case-insensitively
+        # rather than assuming which of the error strings is returned.
+        self.assertIn('error', result.lower())
     
     def test_concurrent_message_processing(self):
         """Test handling of multiple concurrent messages"""
         import threading
         import queue
-        
+
         results = queue.Queue()
-        
+
         def process_message(phone, message):
             try:
-                with patch('whatsapp_integration.get_ai_response') as mock_ai:
-                    mock_response = Mock()
-                    mock_response.content = f"Response to {message}"
-                    mock_ai.return_value = mock_response
-                    
-                    result = self.bot.process_message(phone, message)
-                    results.put(result)
+                result = self.bot.process_message(phone, message)
+                results.put(result)
             except Exception as e:
                 results.put(f"Error: {e}")
-        
-        # Create multiple threads
-        threads = []
-        for i in range(5):
-            thread = threading.Thread(
-                target=process_message,
-                args=(f"123456789{i}", f"Message {i}")
-            )
-            threads.append(thread)
-            thread.start()
-        
-        # Wait for all threads
-        for thread in threads:
-            thread.join()
-        
+
+        # The patch is installed once, around all the threads. Patching inside
+        # each thread races: mock.patch swaps a module global, so one thread
+        # stopping its patch un-mocks the others mid-flight and they call the
+        # real model. That made this test hit the network, take ~6s in tenacity
+        # backoff, and poison Streamlit's cached agent for later tests.
+        with patch('whatsapp_integration.get_ai_response') as mock_ai:
+            mock_ai.side_effect = lambda prompt: Mock(content="Response")
+
+            threads = []
+            for i in range(5):
+                thread = threading.Thread(
+                    target=process_message,
+                    args=(f"123456789{i}", f"Message {i}")
+                )
+                threads.append(thread)
+                thread.start()
+
+            # Wait for all threads
+            for thread in threads:
+                thread.join()
+
         # Check results
         self.assertEqual(results.qsize(), 5)
         while not results.empty():

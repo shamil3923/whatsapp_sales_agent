@@ -119,21 +119,41 @@ class TestSalesAgent(unittest.TestCase):
         mock_agent.run.assert_called_once_with("Test prompt")
         self.assertEqual(response, mock_response)
     
-    def test_product_catalog_exists(self):
-        """Test that product catalog is defined"""
-        from sales_agent import PRODUCT_CATALOG
-        
-        self.assertIsInstance(PRODUCT_CATALOG, str)
-        self.assertIn('Laptops', PRODUCT_CATALOG)
-        self.assertIn('Smartphones', PRODUCT_CATALOG)
-    
+    def test_system_prompt_contains_no_product_data(self):
+        """The catalog must reach the agent through retrieval, not the prompt.
+
+        This replaces test_product_catalog_exists, which asserted the opposite:
+        that a PRODUCT_CATALOG string listing laptops and smartphones was
+        embedded in the prompt. That string was the agent's only source of
+        product knowledge and it is now gone, because a prompt-resident catalog
+        gives the model a second, unverifiable source to answer from and makes
+        the grounding eval unable to distinguish retrieval from recall.
+        """
+        import sales_agent
+        from sales_agent import SALES_SYSTEM_PROMPT
+
+        self.assertFalse(hasattr(sales_agent, 'PRODUCT_CATALOG'))
+
+        for product_term in ['RTX 4080', 'ThinkPad', 'MacBook', 'iPhone',
+                             'Galaxy', 'Office 365', 'Adobe', 'Pixel']:
+            self.assertNotIn(product_term, SALES_SYSTEM_PROMPT,
+                             f"{product_term!r} leaked into the system prompt")
+
     def test_sales_system_prompt_exists(self):
         """Test that system prompt is properly configured"""
         from sales_agent import SALES_SYSTEM_PROMPT
-        
+
         self.assertIsInstance(SALES_SYSTEM_PROMPT, str)
-        self.assertIn('Sales Analyst', SALES_SYSTEM_PROMPT)
-        self.assertIn('Currency Conversion', SALES_SYSTEM_PROMPT)
+        self.assertIn('Sales Assistant', SALES_SYSTEM_PROMPT)
+        self.assertIn('convert_currency', SALES_SYSTEM_PROMPT)
+
+    def test_system_prompt_states_grounding_rules(self):
+        """The grounding eval measures adherence to these; they must be stated."""
+        from sales_agent import SALES_SYSTEM_PROMPT
+
+        self.assertIn('search_products', SALES_SYSTEM_PROMPT)
+        self.assertIn('tool result', SALES_SYSTEM_PROMPT)
+        self.assertIn('do not stock', SALES_SYSTEM_PROMPT.lower())
 
 
 class TestIntegration(unittest.TestCase):

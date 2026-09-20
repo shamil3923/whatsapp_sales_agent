@@ -1,0 +1,14 @@
+# Optional dependencies for semantic retrieval and the evaluation harness.
+#
+# The application runs without these: with no embeddings built, the catalog
+# tools serve lexical (BM25) results and log a warning. They are kept out of
+# config/requirements.txt because sentence-transformers pulls in torch, which
+# would add hundreds of megabytes to every CI run and every fresh clone.
+#
+#   pip install -r config/requirements-ml.txt
+#   python scripts/build_index.py
+#
+# On a slow connection, prefer running the eval harness on Colab; see
+# evals/README.md.
+
+sentence-transformers>=3.0.0

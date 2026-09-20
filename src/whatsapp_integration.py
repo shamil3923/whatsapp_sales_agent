@@ -6,6 +6,8 @@ This module integrates the Sales Agent with WhatsApp using Meta's Cloud API
 
 import os
 import json
+import hashlib
+import hmac
 import requests
 from flask import Flask, request, jsonify
 from dotenv import load_dotenv
@@ -13,11 +15,13 @@ import asyncio
 from datetime import datetime
 import logging
 import sys
+from typing import Optional
 import os
 sys.path.append(os.path.dirname(__file__))
 
 from sales_agent import get_sales_agent, get_ai_response
 from conversation_memory import ConversationMemory
+import telemetry
 
 # Load environment variables
 load_dotenv()
@@ -33,7 +37,34 @@ app = Flask(__name__)
 WHATSAPP_TOKEN = os.getenv('WHATSAPP_ACCESS_TOKEN')
 WHATSAPP_PHONE_NUMBER_ID = os.getenv('WHATSAPP_PHONE_NUMBER_ID')
 VERIFY_TOKEN = os.getenv('WHATSAPP_VERIFY_TOKEN', 'sales_agent_verify_token')
+# Meta signs every webhook POST with this app secret. Without it, anyone who
+# learns the deployment URL can post fabricated messages and spend model budget.
+WHATSAPP_APP_SECRET = os.getenv('WHATSAPP_APP_SECRET')
 WHATSAPP_API_URL = f"https://graph.facebook.com/v18.0/{WHATSAPP_PHONE_NUMBER_ID}/messages"
+
+
+def verify_webhook_signature(raw_body: bytes, header_value: Optional[str]) -> bool:
+    """Check Meta's X-Hub-Signature-256 header against the raw request body.
+
+    The HMAC covers the bytes exactly as sent, so the raw body must be used —
+    re-serialising the parsed JSON changes whitespace and key order and the
+    digest no longer matches.
+
+    Returns False when the header is absent or malformed: a caller that has
+    configured a secret must not accept an unsigned request.
+    """
+    if not WHATSAPP_APP_SECRET:
+        return False
+    if not header_value or not header_value.startswith('sha256='):
+        return False
+
+    provided = header_value.split('=', 1)[1].strip()
+    expected = hmac.new(
+        WHATSAPP_APP_SECRET.encode('utf-8'), raw_body, hashlib.sha256
+    ).hexdigest()
+
+    # Constant-time comparison: a plain == leaks how much of the digest matched.
+    return hmac.compare_digest(expected, provided)
 
 class WhatsAppBot:
     def __init__(self):
@@ -61,15 +92,16 @@ class WhatsAppBot:
                 "text": {"body": message}
             }
             
-            response = requests.post(WHATSAPP_API_URL, headers=headers, json=payload)
-            
+            with telemetry.timed("send", telemetry.current_turn()):
+                response = requests.post(WHATSAPP_API_URL, headers=headers, json=payload)
+
             if response.status_code == 200:
                 logger.info(f"Message sent successfully to {phone_number}")
                 return True
             else:
                 logger.error(f"Failed to send message: {response.text}")
                 return False
-                
+
         except Exception as e:
             logger.error(f"Error sending message: {str(e)}")
             return False
@@ -101,18 +133,30 @@ class WhatsAppBot:
     
     def process_message(self, phone_number: str, message: str) -> str:
         """Process incoming message with conversation memory and generate context-aware response"""
+        # A turn started by the webhook is already open on this thread; the
+        # Streamlit and manual-send paths start one here so they are measured
+        # too (without a `send` stage, since they do not send via Meta).
+        ctx = telemetry.current_turn()
+        owns_turn = ctx is None
+        if owns_turn:
+            ctx = telemetry.begin_turn(phone_number)
+
         try:
-            # Add user message to memory
-            self.memory.add_message(phone_number, "user", message)
-
-            # Get conversation context
-            conversation_context = self.memory.get_conversation_context(phone_number)
-
             # Detect message type and extract insights
-            message_type, metadata = self._analyze_message(message)
+            with telemetry.timed("classify", ctx):
+                message_type, metadata = self._analyze_message(message)
+            ctx.message_type = message_type
 
-            # Update user preferences based on message
-            self._update_user_preferences(phone_number, message, message_type)
+            # Read and write the conversation store
+            with telemetry.timed("retrieve", ctx):
+                # Add user message to memory
+                self.memory.add_message(phone_number, "user", message)
+
+                # Get conversation context
+                conversation_context = self.memory.get_conversation_context(phone_number)
+
+                # Update user preferences based on message
+                self._update_user_preferences(phone_number, message, message_type)
 
             # Create enhanced context with memory
             whatsapp_context = f"""
@@ -137,8 +181,13 @@ class WhatsAppBot:
             Generate a context-aware, personalized response:
             """
 
-            # Get AI response
-            response = get_ai_response(whatsapp_context)
+            # Get AI response. Tool calls happen inside the agent's run loop,
+            # so their time is nested inside this stage and reported separately
+            # from the agent's own per-call metrics.
+            with telemetry.timed("llm", ctx):
+                response = get_ai_response(whatsapp_context)
+            telemetry.record_usage(ctx, response)
+            telemetry.record_tool_time(ctx, response)
 
             # Format response for WhatsApp
             formatted_response = self.format_for_whatsapp(response.content)
@@ -150,7 +199,14 @@ class WhatsAppBot:
 
         except Exception as e:
             logger.error(f"Error processing message: {str(e)}")
+            ctx.ok = False
+            ctx.error = type(e).__name__
             return "Sorry, I'm having trouble processing your request. Please try again! 🤖"
+
+        finally:
+            if owns_turn:
+                telemetry.log_turn(ctx)
+                telemetry.clear_current_turn()
     
     def format_for_whatsapp(self, message: str) -> str:
         """Format message for WhatsApp display"""
@@ -280,6 +336,22 @@ def verify_webhook():
 @app.route('/webhook', methods=['POST'])
 def handle_webhook():
     """Handle incoming WhatsApp messages"""
+    # Authenticate before doing any work: rejecting here is what stops a
+    # forged request from reaching the model and costing money.
+    if WHATSAPP_APP_SECRET:
+        if not verify_webhook_signature(
+            request.get_data(), request.headers.get('X-Hub-Signature-256')
+        ):
+            logger.warning(
+                "Rejected webhook POST with missing or invalid X-Hub-Signature-256"
+            )
+            return jsonify({"status": "error", "message": "Invalid signature"}), 403
+    else:
+        logger.warning(
+            "WHATSAPP_APP_SECRET is not set - webhook signature verification is "
+            "DISABLED and this endpoint will accept forged messages"
+        )
+
     try:
         data = request.get_json()
         logger.info(f"Received webhook data: {json.dumps(data, indent=2)}")
@@ -298,13 +370,21 @@ def handle_webhook():
                                 
                                 if message_text:
                                     logger.info(f"Processing message from {phone_number}: {message_text}")
-                                    
-                                    # Process with Sales Agent
-                                    response = whatsapp_bot.process_message(phone_number, message_text)
-                                    
-                                    # Send response
-                                    whatsapp_bot.send_message(phone_number, response)
-        
+
+                                    # One telemetry turn spans generating the
+                                    # reply and delivering it, so the `send`
+                                    # stage lands on the same line.
+                                    ctx = telemetry.begin_turn(phone_number)
+                                    try:
+                                        # Process with Sales Agent
+                                        response = whatsapp_bot.process_message(phone_number, message_text)
+
+                                        # Send response
+                                        whatsapp_bot.send_message(phone_number, response)
+                                    finally:
+                                        telemetry.log_turn(ctx)
+                                        telemetry.clear_current_turn()
+
         return jsonify({"status": "success"}), 200
         
     except Exception as e:
@@ -323,14 +403,15 @@ def send_manual_message():
             return jsonify({"error": "phone_number and message required"}), 400
         
         success = whatsapp_bot.send_message(phone_number, message)
-        
+
+        # Shape documented in docs/API_REFERENCE.md.
         if success:
-            return jsonify({"status": "Message sent successfully"})
+            return jsonify({"success": True, "message": "Message sent successfully"})
         else:
-            return jsonify({"error": "Failed to send message"}), 500
-            
+            return jsonify({"success": False, "error": "Failed to send message"}), 500
+
     except Exception as e:
-        return jsonify({"error": str(e)}), 500
+        return jsonify({"success": False, "error": str(e)}), 500
 
 @app.route('/conversation/<phone_number>', methods=['GET'])
 def get_conversation_history(phone_number):
