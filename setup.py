@@ -17,11 +17,11 @@ setup(
     description="An intelligent WhatsApp sales agent powered by Google Gemini AI",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/shamil3923/ERP_Recommendation_Widget-",
+    url="https://github.com/shamil3923/whatsapp_sales_agent",
     project_urls={
-        "Bug Tracker": "https://github.com/shamil3923/ERP_Recommendation_Widget-/issues",
-        "Documentation": "https://github.com/shamil3923/ERP_Recommendation_Widget-/blob/main/README.md",
-        "Source Code": "https://github.com/shamil3923/ERP_Recommendation_Widget-",
+        "Bug Tracker": "https://github.com/shamil3923/whatsapp_sales_agent/issues",
+        "Documentation": "https://github.com/shamil3923/whatsapp_sales_agent/blob/main/README.md",
+        "Source Code": "https://github.com/shamil3923/whatsapp_sales_agent",
     },
     classifiers=[
         "Development Status :: 4 - Beta",

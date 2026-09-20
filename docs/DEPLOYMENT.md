@@ -115,8 +115,8 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install python3 python3-pip python3-venv nginx -y
 
 # Clone repository
-git clone https://github.com/shamil3923/ERP_Recommendation_Widget-.git
-cd Task_02
+git clone https://github.com/shamil3923/whatsapp_sales_agent.git
+cd whatsapp_sales_agent
 
 # Create virtual environment
 python3 -m venv sales_agent_env
@@ -164,9 +164,9 @@ After=network.target
 [Service]
 User=ubuntu
 Group=ubuntu
-WorkingDirectory=/home/ubuntu/Task_02
-Environment=PATH=/home/ubuntu/Task_02/sales_agent_env/bin
-ExecStart=/home/ubuntu/Task_02/sales_agent_env/bin/gunicorn --config gunicorn.conf.py src.whatsapp_integration:app
+WorkingDirectory=/home/ubuntu/whatsapp_sales_agent
+Environment=PATH=/home/ubuntu/whatsapp_sales_agent/sales_agent_env/bin
+ExecStart=/home/ubuntu/whatsapp_sales_agent/sales_agent_env/bin/gunicorn --config gunicorn.conf.py src.whatsapp_integration:app
 Restart=always
 
 [Install]

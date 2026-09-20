@@ -181,6 +181,11 @@ ngrok
 *.db
 *.sqlite
 *.sqlite3
+*.db-wal
+*.db-shm
+
+# Runtime telemetry (one JSON line per conversation turn)
+data/telemetry/
 
 # Cache files
 .cache/

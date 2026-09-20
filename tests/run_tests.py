@@ -6,15 +6,20 @@ import unittest
 import sys
 import os
 
+TESTS_DIR = os.path.dirname(os.path.abspath(__file__))
+REPO_ROOT = os.path.dirname(TESTS_DIR)
+
 # Add src directory to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', 'src'))
+sys.path.insert(0, os.path.join(REPO_ROOT, 'src'))
 
 def run_all_tests():
     """Run all test suites"""
-    # Discover and run all tests
+    # Discover and run all tests. top_level_dir makes these import as
+    # `tests.test_*`, so they are not shadowed by the like-named dev scripts in
+    # src/ once a test module puts src/ on sys.path.
     loader = unittest.TestLoader()
-    start_dir = os.path.dirname(__file__)
-    suite = loader.discover(start_dir, pattern='test_*.py')
+    suite = loader.discover(TESTS_DIR, pattern='test_*.py',
+                            top_level_dir=REPO_ROOT)
     
     # Run tests with detailed output
     runner = unittest.TextTestRunner(verbosity=2)

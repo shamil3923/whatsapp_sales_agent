@@ -6,10 +6,14 @@ from phi.tools import Toolkit
 from dotenv import load_dotenv
 from tenacity import retry, stop_after_attempt, wait_exponential
 import os
+import sys
 import requests
 import json
 from datetime import datetime
 from typing import Optional
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from catalog_tools import ProductCatalog  # noqa: E402
 
 load_dotenv()
 
@@ -138,52 +142,56 @@ st.set_page_config(
 st.title("💼 Sales Agent")
 st.markdown("Powered by Gemini Pro | Market Analytics | Currency Conversion 💱")
 
-# Expanded Product Catalog
-PRODUCT_CATALOG = """
-**Available Products:**
-- Premium Laptops: Gaming (RTX 4080, i7), Business (ThinkPad, MacBook Pro), Ultrabooks  
-- Smartphones: iPhone 15 Pro, Samsung Galaxy S24, Google Pixel 8
-- Accessories: Wireless chargers, Premium headphones, Protective cases
-- Software: Office 365, Adobe Creative Suite, Antivirus solutions
-"""
-
-# System prompt with enhanced instructions
+# System prompt.
+#
+# There is deliberately NO product data here. Every product name, spec, price
+# and stock level must come from a ProductCatalog tool result, so that any
+# product claim the agent makes can be checked against a catalog row. Inlining
+# even a short product list would give the model a second, unverifiable source
+# to answer from, and the grounding eval could no longer tell retrieval from
+# recall.
 SALES_SYSTEM_PROMPT = f"""
-**Role**: Senior Sales Analyst | Date: {datetime.now().strftime('%Y-%m-%d')}
+**Role**: Sales Assistant for an electronics retailer | Date: {datetime.now().strftime('%Y-%m-%d')}
 
-**Core Capabilities**:
-1. Real-time Market Analysis (via web search)
-2. Inventory Management & Stock Checks
-3. Product Comparisons & Alternatives
-4. Technical Specifications Breakdown
-5. Price Tracking & Competitor Monitoring
-6. Trend Identification & Forecasting
-7. **Currency Conversion & International Pricing** (NEW!)
+**Tools**:
+- `search_products(query, k)` - search the catalog. Use it for every product
+  question, including vague ones.
+- `get_product(sku)` - full specs, price and stock for one SKU.
+- `check_stock(sku)` - current stock for one SKU.
+- `convert_currency(amount, from_currency, to_currency)` - live exchange rates.
+- Web search - for general market context only, never for our prices or stock.
 
-**Product Catalog**:
-{PRODUCT_CATALOG}
+**Grounding rules - these override every other instruction**:
+1. You may only state a product name, specification, price or stock level that
+   appears in a tool result from this conversation. Never state one from
+   memory, however confident you feel.
+2. Before answering any product question, call `search_products`. Before
+   quoting a price, spec or stock level for a specific item, make sure that
+   item is in a tool result you have already received.
+3. If retrieval returns nothing relevant, say plainly that we do not stock the
+   item. Do not substitute a similar product as though it were the one asked
+   for, and do not describe a product you have not retrieved.
+4. Never invent a SKU. Quote SKUs exactly as they appear in tool results.
+5. Quote prices exactly as returned, in USD, and convert only with
+   `convert_currency`. Never estimate an exchange rate.
+6. Web search results describe the wider market, not our inventory. Never
+   present a product found by web search as something we sell.
+7. If a tool fails or returns an error, say you could not look it up. Do not
+   answer from memory instead.
 
-**Operational Guidelines**:
-1. Always first check 'stock' field before recommendations
-2. Use web search for latest market trends when needed
-3. Compare minimum 3 products for any comparison request
-4. Highlight 'trend_score' when > 4.5/5.0
-5. Mention competitor alternatives with pricing
-6. Provide warranty & return policy information
-7. **Currency Conversion**: When customers ask about prices in different currencies, use convert_currency() tool
-8. **International Sales**: Automatically offer currency conversion for international customers
-9. Format responses with:
-   - Bullet points for features
-   - Tables for comparisons
-   - Bold headers for sections
-   - Currency conversions when relevant
+**Sales guidance**:
+- Check the `stock` field before recommending anything. If `stock` is 0, say it
+  is out of stock and offer a retrieved alternative. If `stock` is below 5,
+  mention that it is low.
+- For comparisons, retrieve each product you compare.
+- Offer currency conversion when a customer signals they are not in the US.
+- If a customer asks for something outside the catalog's range, say so rather
+  than stretching a loose match to fit.
 
-**Error Handling**:
-- If stock < 5: "Low stock alert: Only X remaining"
-- If no data: "Let me research that..."
-- For pricing: "Current promotion: [details]"
-- For currency conversion errors: "Let me get the latest exchange rates..."
-- Never invent specifications or exchange rates
+**Format** (WhatsApp):
+- Short paragraphs, bullet points for features, bold for emphasis.
+- Lead with the answer, not with a preamble.
+- Close with a question that moves the sale forward.
 """
 
 @st.cache_resource
@@ -195,7 +203,7 @@ def get_sales_agent():
             max_tokens=1024
         ),
         system_prompt=SALES_SYSTEM_PROMPT,
-        tools=[DuckDuckGo(), CurrencyConverter()],
+        tools=[DuckDuckGo(), CurrencyConverter(), ProductCatalog()],
         markdown=True
     )
 

@@ -1,0 +1,1645 @@
+{
+  "model": "sentence-transformers/all-MiniLM-L6-v2",
+  "n_in_catalog": 85,
+  "n_out_of_catalog": 15,
+  "signals": {
+    "top1": {
+      "auc": 0.7255,
+      "curve": [
+        {
+          "tau": 0.1616,
+          "abstain_rate_ooc": 0.0,
+          "false_abstain_rate": 0.0,
+          "hit@3_after": 0.7882,
+          "youden_j": 0.0
+        },
+        {
+          "tau": 0.1788,
+          "abstain_rate_ooc": 0.0667,
+          "false_abstain_rate": 0.0118,
+          "hit@3_after": 0.7882,
+          "youden_j": 0.0549
+        },
+        {
+          "tau": 0.196,
+          "abstain_rate_ooc": 0.0667,
+          "false_abstain_rate": 0.0235,
+          "hit@3_after": 0.7765,
+          "youden_j": 0.0431
+        },
+        {
+          "tau": 0.2132,
+          "abstain_rate_ooc": 0.0667,
+          "false_abstain_rate": 0.0353,
+          "hit@3_after": 0.7647,
+          "youden_j": 0.0314
+        },
+        {
+          "tau": 0.2304,
+          "abstain_rate_ooc": 0.1333,
+          "false_abstain_rate": 0.0471,
+          "hit@3_after": 0.7647,
+          "youden_j": 0.0863
+        },
+        {
+          "tau": 0.2475,
+          "abstain_rate_ooc": 0.2,
+          "false_abstain_rate": 0.0471,
+          "hit@3_after": 0.7647,
+          "youden_j": 0.1529
+        },
+        {
+          "tau": 0.2647,
+          "abstain_rate_ooc": 0.2667,
+          "false_abstain_rate": 0.0941,
+          "hit@3_after": 0.7176,
+          "youden_j": 0.1725
+        },
+        {
+          "tau": 0.2819,
+          "abstain_rate_ooc": 0.2667,
+          "false_abstain_rate": 0.1176,
+          "hit@3_after": 0.7059,
+          "youden_j": 0.149
+        },
+        {
+          "tau": 0.2991,
+          "abstain_rate_ooc": 0.3333,
+          "false_abstain_rate": 0.1412,
+          "hit@3_after": 0.6941,
+          "youden_j": 0.1922
+        },
+        {
+          "tau": 0.3163,
+          "abstain_rate_ooc": 0.4667,
+          "false_abstain_rate": 0.1647,
+          "hit@3_after": 0.6706,
+          "youden_j": 0.302
+        },
+        {
+          "tau": 0.3335,
+          "abstain_rate_ooc": 0.5333,
+          "false_abstain_rate": 0.1882,
+          "hit@3_after": 0.6471,
+          "youden_j": 0.3451
+        },
+        {
+          "tau": 0.3507,
+          "abstain_rate_ooc": 0.6,
+          "false_abstain_rate": 0.2,
+          "hit@3_after": 0.6471,
+          "youden_j": 0.4
+        },
+        {
+          "tau": 0.3679,
+          "abstain_rate_ooc": 0.6667,
+          "false_abstain_rate": 0.2353,
+          "hit@3_after": 0.6118,
+          "youden_j": 0.4314
+        },
+        {
+          "tau": 0.3851,
+          "abstain_rate_ooc": 0.7333,
+          "false_abstain_rate": 0.2471,
+          "hit@3_after": 0.6,
+          "youden_j": 0.4863
+        },
+        {
+          "tau": 0.4023,
+          "abstain_rate_ooc": 0.7333,
+          "false_abstain_rate": 0.2706,
+          "hit@3_after": 0.6,
+          "youden_j": 0.4627
+        },
+        {
+          "tau": 0.4194,
+          "abstain_rate_ooc": 0.7333,
+          "false_abstain_rate": 0.3059,
+          "hit@3_after": 0.5647,
+          "youden_j": 0.4275
+        },
+        {
+          "tau": 0.4366,
+          "abstain_rate_ooc": 0.7333,
+          "false_abstain_rate": 0.3176,
+          "hit@3_after": 0.5529,
+          "youden_j": 0.4157
+        },
+        {
+          "tau": 0.4538,
+          "abstain_rate_ooc": 0.7333,
+          "false_abstain_rate": 0.3529,
+          "hit@3_after": 0.5294,
+          "youden_j": 0.3804
+        },
+        {
+          "tau": 0.471,
+          "abstain_rate_ooc": 0.7333,
+          "false_abstain_rate": 0.3882,
+          "hit@3_after": 0.4941,
+          "youden_j": 0.3451
+        },
+        {
+          "tau": 0.4882,
+          "abstain_rate_ooc": 0.8,
+          "false_abstain_rate": 0.4588,
+          "hit@3_after": 0.4471,
+          "youden_j": 0.3412
+        },
+        {
+          "tau": 0.5054,
+          "abstain_rate_ooc": 0.8,
+          "false_abstain_rate": 0.5412,
+          "hit@3_after": 0.3765,
+          "youden_j": 0.2588
+        },
+        {
+          "tau": 0.5226,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.6,
+          "hit@3_after": 0.3412,
+          "youden_j": 0.2667
+        },
+        {
+          "tau": 0.5398,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.6588,
+          "hit@3_after": 0.2941,
+          "youden_j": 0.2078
+        },
+        {
+          "tau": 0.557,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.7294,
+          "hit@3_after": 0.2588,
+          "youden_j": 0.1373
+        },
+        {
+          "tau": 0.5742,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.7412,
+          "hit@3_after": 0.2471,
+          "youden_j": 0.1255
+        },
+        {
+          "tau": 0.5913,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.7765,
+          "hit@3_after": 0.2235,
+          "youden_j": 0.0902
+        },
+        {
+          "tau": 0.6085,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.8,
+          "hit@3_after": 0.2,
+          "youden_j": 0.0667
+        },
+        {
+          "tau": 0.6257,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.8235,
+          "hit@3_after": 0.1765,
+          "youden_j": 0.0431
+        },
+        {
+          "tau": 0.6429,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.8353,
+          "hit@3_after": 0.1647,
+          "youden_j": 0.0314
+        },
+        {
+          "tau": 0.6601,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.8471,
+          "hit@3_after": 0.1529,
+          "youden_j": 0.0196
+        },
+        {
+          "tau": 0.6773,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8471,
+          "hit@3_after": 0.1529,
+          "youden_j": 0.1529
+        },
+        {
+          "tau": 0.6945,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8471,
+          "hit@3_after": 0.1529,
+          "youden_j": 0.1529
+        },
+        {
+          "tau": 0.7117,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8588,
+          "hit@3_after": 0.1412,
+          "youden_j": 0.1412
+        },
+        {
+          "tau": 0.7289,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9059,
+          "hit@3_after": 0.0941,
+          "youden_j": 0.0941
+        },
+        {
+          "tau": 0.7461,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9059,
+          "hit@3_after": 0.0941,
+          "youden_j": 0.0941
+        },
+        {
+          "tau": 0.7632,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9059,
+          "hit@3_after": 0.0941,
+          "youden_j": 0.0941
+        },
+        {
+          "tau": 0.7804,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9176,
+          "hit@3_after": 0.0824,
+          "youden_j": 0.0824
+        },
+        {
+          "tau": 0.7976,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9294,
+          "hit@3_after": 0.0706,
+          "youden_j": 0.0706
+        },
+        {
+          "tau": 0.8148,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9529,
+          "hit@3_after": 0.0471,
+          "youden_j": 0.0471
+        },
+        {
+          "tau": 0.832,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9765,
+          "hit@3_after": 0.0235,
+          "youden_j": 0.0235
+        },
+        {
+          "tau": 0.8492,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9882,
+          "hit@3_after": 0.0118,
+          "youden_j": 0.0118
+        }
+      ],
+      "best_youden": {
+        "tau": 0.3851,
+        "abstain_rate_ooc": 0.7333,
+        "false_abstain_rate": 0.2471,
+        "hit@3_after": 0.6,
+        "youden_j": 0.4863
+      }
+    },
+    "gap": {
+      "auc": 0.5882,
+      "curve": [
+        {
+          "tau": 0.0021,
+          "abstain_rate_ooc": 0.0,
+          "false_abstain_rate": 0.0,
+          "hit@3_after": 0.7882,
+          "youden_j": 0.0
+        },
+        {
+          "tau": 0.0092,
+          "abstain_rate_ooc": 0.0667,
+          "false_abstain_rate": 0.1529,
+          "hit@3_after": 0.7059,
+          "youden_j": -0.0863
+        },
+        {
+          "tau": 0.0162,
+          "abstain_rate_ooc": 0.2,
+          "false_abstain_rate": 0.2706,
+          "hit@3_after": 0.6235,
+          "youden_j": -0.0706
+        },
+        {
+          "tau": 0.0232,
+          "abstain_rate_ooc": 0.4,
+          "false_abstain_rate": 0.3412,
+          "hit@3_after": 0.5882,
+          "youden_j": 0.0588
+        },
+        {
+          "tau": 0.0303,
+          "abstain_rate_ooc": 0.4,
+          "false_abstain_rate": 0.4,
+          "hit@3_after": 0.5529,
+          "youden_j": 0.0
+        },
+        {
+          "tau": 0.0373,
+          "abstain_rate_ooc": 0.5333,
+          "false_abstain_rate": 0.4824,
+          "hit@3_after": 0.4824,
+          "youden_j": 0.051
+        },
+        {
+          "tau": 0.0443,
+          "abstain_rate_ooc": 0.6667,
+          "false_abstain_rate": 0.5176,
+          "hit@3_after": 0.4588,
+          "youden_j": 0.149
+        },
+        {
+          "tau": 0.0514,
+          "abstain_rate_ooc": 0.8667,
+          "false_abstain_rate": 0.5412,
+          "hit@3_after": 0.4353,
+          "youden_j": 0.3255
+        },
+        {
+          "tau": 0.0584,
+          "abstain_rate_ooc": 0.9333,
+          "false_abstain_rate": 0.5882,
+          "hit@3_after": 0.3882,
+          "youden_j": 0.3451
+        },
+        {
+          "tau": 0.0654,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.6706,
+          "hit@3_after": 0.3176,
+          "youden_j": 0.3294
+        },
+        {
+          "tau": 0.0725,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.7412,
+          "hit@3_after": 0.2471,
+          "youden_j": 0.2588
+        },
+        {
+          "tau": 0.0795,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.7647,
+          "hit@3_after": 0.2353,
+          "youden_j": 0.2353
+        },
+        {
+          "tau": 0.0865,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.7765,
+          "hit@3_after": 0.2235,
+          "youden_j": 0.2235
+        },
+        {
+          "tau": 0.0936,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.7765,
+          "hit@3_after": 0.2235,
+          "youden_j": 0.2235
+        },
+        {
+          "tau": 0.1006,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8118,
+          "hit@3_after": 0.1882,
+          "youden_j": 0.1882
+        },
+        {
+          "tau": 0.1076,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8235,
+          "hit@3_after": 0.1765,
+          "youden_j": 0.1765
+        },
+        {
+          "tau": 0.1147,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8353,
+          "hit@3_after": 0.1647,
+          "youden_j": 0.1647
+        },
+        {
+          "tau": 0.1217,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8471,
+          "hit@3_after": 0.1529,
+          "youden_j": 0.1529
+        },
+        {
+          "tau": 0.1287,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8471,
+          "hit@3_after": 0.1529,
+          "youden_j": 0.1529
+        },
+        {
+          "tau": 0.1358,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8471,
+          "hit@3_after": 0.1529,
+          "youden_j": 0.1529
+        },
+        {
+          "tau": 0.1428,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8588,
+          "hit@3_after": 0.1412,
+          "youden_j": 0.1412
+        },
+        {
+          "tau": 0.1498,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8588,
+          "hit@3_after": 0.1412,
+          "youden_j": 0.1412
+        },
+        {
+          "tau": 0.1569,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8588,
+          "hit@3_after": 0.1412,
+          "youden_j": 0.1412
+        },
+        {
+          "tau": 0.1639,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8824,
+          "hit@3_after": 0.1176,
+          "youden_j": 0.1176
+        },
+        {
+          "tau": 0.1709,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8824,
+          "hit@3_after": 0.1176,
+          "youden_j": 0.1176
+        },
+        {
+          "tau": 0.178,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.8941,
+          "hit@3_after": 0.1059,
+          "youden_j": 0.1059
+        },
+        {
+          "tau": 0.185,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9176,
+          "hit@3_after": 0.0824,
+          "youden_j": 0.0824
+        },
+        {
+          "tau": 0.192,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9294,
+          "hit@3_after": 0.0706,
+          "youden_j": 0.0706
+        },
+        {
+          "tau": 0.1991,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9294,
+          "hit@3_after": 0.0706,
+          "youden_j": 0.0706
+        },
+        {
+          "tau": 0.2061,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9294,
+          "hit@3_after": 0.0706,
+          "youden_j": 0.0706
+        },
+        {
+          "tau": 0.2131,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9294,
+          "hit@3_after": 0.0706,
+          "youden_j": 0.0706
+        },
+        {
+          "tau": 0.2202,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9294,
+          "hit@3_after": 0.0706,
+          "youden_j": 0.0706
+        },
+        {
+          "tau": 0.2272,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9294,
+          "hit@3_after": 0.0706,
+          "youden_j": 0.0706
+        },
+        {
+          "tau": 0.2342,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9294,
+          "hit@3_after": 0.0706,
+          "youden_j": 0.0706
+        },
+        {
+          "tau": 0.2413,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9412,
+          "hit@3_after": 0.0588,
+          "youden_j": 0.0588
+        },
+        {
+          "tau": 0.2483,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9529,
+          "hit@3_after": 0.0471,
+          "youden_j": 0.0471
+        },
+        {
+          "tau": 0.2553,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9529,
+          "hit@3_after": 0.0471,
+          "youden_j": 0.0471
+        },
+        {
+          "tau": 0.2624,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9647,
+          "hit@3_after": 0.0353,
+          "youden_j": 0.0353
+        },
+        {
+          "tau": 0.2694,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9647,
+          "hit@3_after": 0.0353,
+          "youden_j": 0.0353
+        },
+        {
+          "tau": 0.2764,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9765,
+          "hit@3_after": 0.0235,
+          "youden_j": 0.0235
+        },
+        {
+          "tau": 0.2835,
+          "abstain_rate_ooc": 1.0,
+          "false_abstain_rate": 0.9882,
+          "hit@3_after": 0.0118,
+          "youden_j": 0.0118
+        }
+      ],
+      "best_youden": {
+        "tau": 0.0584,
+        "abstain_rate_ooc": 0.9333,
+        "false_abstain_rate": 0.5882,
+        "hit@3_after": 0.3882,
+        "youden_j": 0.3451
+      }
+    },
+    "rules": {
+      "no abstention (current behaviour)": {
+        "abstain_rate_ooc": 0.0,
+        "false_abstain_rate": 0.0,
+        "hit@3_after": 0.7882,
+        "youden_j": 0.0
+      },
+      "bm25 returns nothing": {
+        "abstain_rate_ooc": 0.3333,
+        "false_abstain_rate": 0.0588,
+        "hit@3_after": 0.7294,
+        "youden_j": 0.2745
+      },
+      "dense top1 < 0.385 (best J)": {
+        "abstain_rate_ooc": 0.7333,
+        "false_abstain_rate": 0.2471,
+        "hit@3_after": 0.6,
+        "youden_j": 0.4863
+      },
+      "dense top1 < 0.247 (<=5% false)": {
+        "abstain_rate_ooc": 0.2,
+        "false_abstain_rate": 0.0471,
+        "hit@3_after": 0.7647,
+        "youden_j": 0.1529
+      },
+      "bm25 empty OR dense top1 < 0.385": {
+        "abstain_rate_ooc": 0.7333,
+        "false_abstain_rate": 0.3059,
+        "hit@3_after": 0.5412,
+        "youden_j": 0.4275
+      },
+      "bm25 empty OR dense top1 < 0.247": {
+        "abstain_rate_ooc": 0.4,
+        "false_abstain_rate": 0.1059,
+        "hit@3_after": 0.7059,
+        "youden_j": 0.2941
+      }
+    }
+  },
+  "per_query": [
+    {
+      "id": "q001",
+      "query": "thinkpad x1 carbon",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.7235245704650879,
+      "gap": 0.18169084936380386,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q002",
+      "query": "do you have the thinkpaid x1",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.3150606155395508,
+      "gap": 0.04395844042301178,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q003",
+      "query": "macbook air 15",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.8000962734222412,
+      "gap": 0.060251384973526,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q004",
+      "query": "macbok air",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.40891024470329285,
+      "gap": 0.031930580735206604,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q005",
+      "query": "xps 13",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.6170972585678101,
+      "gap": 0.1035345196723938,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q006",
+      "query": "dell xps13",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.7966235876083374,
+      "gap": 0.11940442025661469,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q007",
+      "query": "lenovo xps 13",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.6386904716491699,
+      "gap": 0.06422610580921173,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q008",
+      "query": "iphone 15 pro max",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.8207769393920898,
+      "gap": 0.07117028534412384,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q009",
+      "query": "i want the iphone 15 pro max please",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.7220032215118408,
+      "gap": 0.06707936525344849,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q010",
+      "query": "galaxy s24 ultra",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.8392735719680786,
+      "gap": 0.052596911787986755,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q011",
+      "query": "samsung s24 ultra",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.8491902351379395,
+      "gap": 0.04429645836353302,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q012",
+      "query": "google pixel 8",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.8313053250312805,
+      "gap": 0.03358125686645508,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q013",
+      "query": "rog zephyrus",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.42128315567970276,
+      "gap": 0.16304603591561317,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q014",
+      "query": "asus zephyrus g14",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.6433277726173401,
+      "gap": 0.1594831719994545,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q015",
+      "query": "legion pro 7",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.5145268440246582,
+      "gap": 0.18718715012073517,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q016",
+      "query": "sony wh-1000xm5",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.7025160789489746,
+      "gap": 0.27471325546503067,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q017",
+      "query": "sony xm5 headphones",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.7165727615356445,
+      "gap": 0.2834562659263611,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q018",
+      "query": "samsung galaxy buds",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.7659897208213806,
+      "gap": 0.2797274887561798,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q019",
+      "query": "mx master 3s",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.5886672735214233,
+      "gap": 0.24700984358787537,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q020",
+      "query": "microsoft surface go",
+      "category": "exact_model",
+      "in_catalog": true,
+      "top1": 0.7994024753570557,
+      "gap": 0.1387001797556877,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q021",
+      "query": "16GB RAM laptop under $1200",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5419392585754395,
+      "gap": 0.00813223421573639,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q022",
+      "query": "laptop with 32gb ram",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.48147284984588623,
+      "gap": 0.021738313138484955,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q023",
+      "query": "gaming laptop with rtx 4080 under $2500",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5536352396011353,
+      "gap": 0.010407209396362305,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q024",
+      "query": "laptop with rtx 4090",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5062019228935242,
+      "gap": 0.023699671030044556,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q025",
+      "query": "1TB storage laptop",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.46341878175735474,
+      "gap": 0.009571366012096405,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q026",
+      "query": "phone with 5000mAh battery",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.4712546467781067,
+      "gap": 0.0185588076710701,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q027",
+      "query": "phone with 512gb storage",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5528520941734314,
+      "gap": 0.018446043133735657,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q028",
+      "query": "laptop under $600",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5107260942459106,
+      "gap": 0.06122185289859772,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q029",
+      "query": "a laptop, nothing over a grand",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.4165656864643097,
+      "gap": 0.008344665169715881,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q030",
+      "query": "cheapest laptop you have",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5071915984153748,
+      "gap": 0.004998855292797089,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q031",
+      "query": "tablet under $500",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.53117436170578,
+      "gap": 0.007803112268447876,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q032",
+      "query": "phone under $300",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.40214771032333374,
+      "gap": 0.00657094269990921,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q033",
+      "query": "laptop with an oled screen",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.48130786418914795,
+      "gap": 0.006456427276134491,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q034",
+      "query": "120hz display phone",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.4940630793571472,
+      "gap": 0.00828135758638382,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q035",
+      "query": "laptop with 2tb ssd",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.4893076419830322,
+      "gap": 0.006529010832309723,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q036",
+      "query": "apple laptop with 36gb",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5830821990966797,
+      "gap": 0.033960193395614624,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q037",
+      "query": "i9 laptop",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5285363793373108,
+      "gap": 0.01575164496898651,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q038",
+      "query": "snapdragon 8 gen 3 phone",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5845909714698792,
+      "gap": 0.04396280646324158,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q039",
+      "query": "laptop between $1000 and $1500",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5038267970085144,
+      "gap": 0.0130600705742836,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q040",
+      "query": "monitor under $500",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.47639864683151245,
+      "gap": 0.061762236058712006,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q041",
+      "query": "4k monitor",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5348541736602783,
+      "gap": 0.05368401110172272,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q042",
+      "query": "mechanical keyboard",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.7135540843009949,
+      "gap": 0.23650358617305756,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q043",
+      "query": "noise cancelling headphones under $300",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5730211734771729,
+      "gap": 0.11320287734270096,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q044",
+      "query": "power bank with 100w output",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.5966521501541138,
+      "gap": 0.2554149106144905,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q045",
+      "query": "laptop with a 99wh battery",
+      "category": "spec_constrained",
+      "in_catalog": true,
+      "top1": 0.4452000558376312,
+      "gap": 0.01876690983772278,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q046",
+      "query": "something for video editing",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.3562867045402527,
+      "gap": 0.06703021377325058,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q047",
+      "query": "i need to carry my laptop on my commute",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.4456928074359894,
+      "gap": 0.0678127333521843,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q048",
+      "query": "a cheap phone for my mum",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.39051610231399536,
+      "gap": 0.009827613830566406,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q049",
+      "query": "what should i buy for university",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.2576897144317627,
+      "gap": 0.04570074751973152,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q050",
+      "query": "i want to start streaming",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.2907962203025818,
+      "gap": 0.09795709699392319,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q051",
+      "query": "something to keep my phone safe",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.3709196448326111,
+      "gap": 0.047511741518974304,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q052",
+      "query": "i keep running out of battery when i'm out",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.24969050288200378,
+      "gap": 0.014650452882051468,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q053",
+      "query": "i work from home and take a lot of calls",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.1739751696586609,
+      "gap": 0.02323554828763008,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q054",
+      "query": "my eyes hurt after a day at the screen",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.2029954195022583,
+      "gap": 0.0021225661039352417,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q055",
+      "query": "i need to edit photos professionally",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.361672580242157,
+      "gap": 0.05985677242279053,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q056",
+      "query": "something for my kid to do homework on",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.19178229570388794,
+      "gap": 0.054593171924352646,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q057",
+      "query": "i want to play games on the go",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.3473966121673584,
+      "gap": 0.031070031225681305,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q058",
+      "query": "protect my computer from viruses",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.48711955547332764,
+      "gap": 0.09983934462070465,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q059",
+      "query": "i need to run windows on my mac",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.4682126045227051,
+      "gap": 0.17554908245801926,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q060",
+      "query": "something for drawing and sketching",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.27347859740257263,
+      "gap": 0.015130773186683655,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q061",
+      "query": "my laptop is always out of storage",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.31883662939071655,
+      "gap": 0.030429407954216003,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q062",
+      "query": "i need more screen space",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.28875577449798584,
+      "gap": 0.007730148732662201,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q063",
+      "query": "wireless earphones for the gym",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.5404309630393982,
+      "gap": 0.07718410342931747,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q064",
+      "query": "help me look professional on video calls",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.21548806130886078,
+      "gap": 0.007566634565591812,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q065",
+      "query": "i travel a lot and need long battery life",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.27734142541885376,
+      "gap": 0.012819930911064148,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q066",
+      "query": "i design 3d models",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.2590610384941101,
+      "gap": 0.036904580891132355,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q067",
+      "query": "i'm a student on a tight budget",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.2603261172771454,
+      "gap": 0.004604421555995941,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q068",
+      "query": "best camera phone you have",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.5539711713790894,
+      "gap": 0.0186518132686615,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q069",
+      "query": "something quiet i can use in a shared office",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.3200152814388275,
+      "gap": 0.09650387242436409,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q070",
+      "query": "i want to back up my photos safely",
+      "category": "semantic_intent",
+      "in_catalog": true,
+      "top1": 0.30187177658081055,
+      "gap": 0.06702495738863945,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q071",
+      "query": "show me laptops",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.4870438575744629,
+      "gap": 0.013038873672485352,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q072",
+      "query": "what tablets do you sell",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.4589698910713196,
+      "gap": 0.013217657804489136,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q073",
+      "query": "do you have any phones",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.4504808187484741,
+      "gap": 0.025338202714920044,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q074",
+      "query": "what software do you have",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.40632838010787964,
+      "gap": 0.07028616219758987,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q075",
+      "query": "list your accessories",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.3660072088241577,
+      "gap": 0.05454403907060623,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q076",
+      "query": "what apple products do you have",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.5011496543884277,
+      "gap": 0.028194501996040344,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q077",
+      "query": "do you sell samsung",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.49334126710891724,
+      "gap": 0.035776734352111816,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q078",
+      "query": "gaming laptops",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.6172614097595215,
+      "gap": 0.058675602078437805,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q079",
+      "query": "any thinkpads",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.5062512159347534,
+      "gap": 0.02036767452955246,
+      "hit@3": 1.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q080",
+      "query": "what monitors do you stock",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.5353527665138245,
+      "gap": 0.05876397341489792,
+      "hit@3": 1.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q081",
+      "query": "headphones",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.5564863681793213,
+      "gap": 0.07593937963247299,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q082",
+      "query": "do you have keyboards",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.4983079731464386,
+      "gap": 0.08204171806573868,
+      "hit@3": 1.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q083",
+      "query": "external drives",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.49339136481285095,
+      "gap": 0.18471772968769073,
+      "hit@3": 1.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q084",
+      "query": "show me macbooks",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.5299646854400635,
+      "gap": 0.029754601418972015,
+      "hit@3": 1.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q085",
+      "query": "what ipads do you have",
+      "category": "category_browse",
+      "in_catalog": true,
+      "top1": 0.5946692824363708,
+      "gap": 0.00764976441860199,
+      "hit@3": 1.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q086",
+      "query": "do you have a washing machine",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.161600261926651,
+      "gap": 0.059717144817113876,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q087",
+      "query": "nintendo switch",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.2957310080528259,
+      "gap": 0.039467327296733856,
+      "hit@3": 0.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q088",
+      "query": "playstation 5",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.32656562328338623,
+      "gap": 0.04557696729898453,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q089",
+      "query": "huawei p60 pro",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.4852614998817444,
+      "gap": 0.030525527894496918,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q090",
+      "query": "oppo find x7",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.24917477369308472,
+      "gap": 0.016152985394001007,
+      "hit@3": 0.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q091",
+      "query": "do you sell vivo phones",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.3139974772930145,
+      "gap": 0.010090179741382599,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q092",
+      "query": "iphone 17 pro",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.6767178773880005,
+      "gap": 0.05675096809864044,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q093",
+      "query": "pixel 9",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.6661677956581116,
+      "gap": 0.019387125968933105,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q094",
+      "query": "steam deck",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.2460278570652008,
+      "gap": 0.022892184555530548,
+      "hit@3": 0.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q095",
+      "query": "gopro hero 12",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.35444650053977966,
+      "gap": 0.03857371211051941,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q096",
+      "query": "canon eos r5",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.34707072377204895,
+      "gap": 0.036784835159778595,
+      "hit@3": 0.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q097",
+      "query": "dyson hair dryer",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.22186321020126343,
+      "gap": 0.04517119750380516,
+      "hit@3": 0.0,
+      "bm25_empty": true
+    },
+    {
+      "id": "q098",
+      "query": "fitbit charge 6",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.3683963716030121,
+      "gap": 0.008293971419334412,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q099",
+      "query": "framework laptop 16",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.5176493525505066,
+      "gap": 0.018883317708969116,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    },
+    {
+      "id": "q100",
+      "query": "xbox series x",
+      "category": "out_of_catalog",
+      "in_catalog": false,
+      "top1": 0.30011671781539917,
+      "gap": 0.04739149659872055,
+      "hit@3": 0.0,
+      "bm25_empty": false
+    }
+  ]
+}
